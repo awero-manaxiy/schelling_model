@@ -38,9 +38,7 @@ def get_unhappy_and_holes_indeces(grid):
 def get_state(grid, generations):
 
     hole_indeces, unhappy_indeces = get_unhappy_and_holes_indeces(grid)
-    print(len(unhappy_indeces)/10000)
-    delet = 0
-    insert = 0
+
     for i in tqdm(range(generations), ncols=80, ascii=True, desc='Total'):
 
         if len(unhappy_indeces) == 0:
@@ -70,9 +68,7 @@ def get_state(grid, generations):
             if pos in unhappy_indeces:
                 delet += 1
                 unhappy_indeces.remove(pos)
-    print(len(unhappy_indeces)/10000)
-    print(delet, insert)
-    print(np.unique(grid[2:102, 2:102], return_counts=True))
+
     return grid
 
 
