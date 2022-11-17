@@ -57,16 +57,13 @@ def get_state(grid, generations):
         unhappy_append_list = (unhappy_append_list + index - 2).tolist()
         for pos in unhappy_append_list:
             if pos not in unhappy_indeces:
-                insert += 1
                 unhappy_indeces.append(pos)
 
         check_for_happy_area = grid[new_index[0] - 2:new_index[0] + 3, new_index[1] - 2:new_index[1] + 3]
         happy_append_list = np.argwhere(generic_filter(check_for_happy_area, get_happiness, size=(3, 3), mode='constant', cval=10) == 0)[1:3, 1:3]
         happy_append_list = (happy_append_list + new_index - 2).tolist()
-        
         for pos in happy_append_list:
             if pos in unhappy_indeces:
-                delet += 1
                 unhappy_indeces.remove(pos)
 
     return grid
